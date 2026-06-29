@@ -90,6 +90,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: `Trusted Nepal tour operator from ${BRAND.city}. Curated packages to Kathmandu, Pokhara, Muktinath, Lumbini, Janakpur and Chitwan.` },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { title: "Lovable App" },
+      { property: "og:title", content: "Lovable App" },
+      { name: "twitter:title", content: "Lovable App" },
+      { name: "description", content: "Singh Nepal Tours is an SEO-first travel booking platform for Nepal tour packages." },
+      { property: "og:description", content: "Singh Nepal Tours is an SEO-first travel booking platform for Nepal tour packages." },
+      { name: "twitter:description", content: "Singh Nepal Tours is an SEO-first travel booking platform for Nepal tour packages." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/48174e49-6b18-4a19-b2f6-0df6b4444fde/id-preview-5309677a--8a8cc1eb-90ff-454c-874d-596e98c7bdc7.lovable.app-1782752162254.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/48174e49-6b18-4a19-b2f6-0df6b4444fde/id-preview-5309677a--8a8cc1eb-90ff-454c-874d-596e98c7bdc7.lovable.app-1782752162254.png" },
     ],
     links: [
       {
