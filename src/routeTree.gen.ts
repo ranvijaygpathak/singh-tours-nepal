@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NepalTourPackagesRouteImport } from './routes/nepal-tour-packages'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as PackagesSlugRouteImport } from './routes/packages.$slug'
 import { Route as NepalTourPackageFromCityRouteImport } from './routes/nepal-tour-package-from.$city'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NepalTourPackagesRoute = NepalTourPackagesRouteImport.update({
   id: '/nepal-tour-packages',
   path: '/nepal-tour-packages',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
 }
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
 }
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
 }
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/nepal-tour-packages'
+    | '/sitemap.xml'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/nepal-tour-packages'
+    | '/sitemap.xml'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
   id:
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/nepal-tour-packages'
+    | '/sitemap.xml'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
   fileRoutesById: FileRoutesById
@@ -131,12 +143,20 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   NepalTourPackagesRoute: typeof NepalTourPackagesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   NepalTourPackageFromCityRoute: typeof NepalTourPackageFromCityRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nepal-tour-packages': {
       id: '/nepal-tour-packages'
       path: '/nepal-tour-packages'
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   NepalTourPackagesRoute: NepalTourPackagesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   NepalTourPackageFromCityRoute: NepalTourPackageFromCityRoute,
   PackagesSlugRoute: PackagesSlugRoute,
 }
