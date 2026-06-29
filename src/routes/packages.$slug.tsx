@@ -1,12 +1,12 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { Clock, MapPin, Check, X, Hotel, Car, UtensilsCrossed, Phone, MessageCircle, Star } from "lucide-react";
-import { BRAND, PACKAGES, formatINR, whatsappLink } from "@/lib/site";
+import { BRAND, PACKAGES, formatINR, whatsappLink, type TourPackage } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PackageCard } from "@/components/site/PackageCard";
 
 export const Route = createFileRoute("/packages/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): TourPackage => {
     const pkg = PACKAGES.find((p) => p.slug === params.slug);
     if (!pkg) throw notFound();
     return pkg;
