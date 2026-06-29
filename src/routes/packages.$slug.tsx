@@ -69,7 +69,7 @@ export const Route = createFileRoute("/packages/$slug")({
 });
 
 function PackagePage() {
-  const pkg = Route.useLoaderData();
+  const pkg = Route.useLoaderData() as TourPackage;
   const related = PACKAGES.filter((p) => p.slug !== pkg.slug).slice(0, 3);
   const enquiryMsg = `Hi Singh Travels, I'm interested in the ${pkg.name} (${pkg.duration}) package starting at ${formatINR(pkg.startingPrice)}.`;
 
