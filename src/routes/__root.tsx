@@ -11,6 +11,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "../components/site/Header";
+import { Footer } from "../components/site/Footer";
+import { StickyCTAs } from "../components/site/StickyCTAs";
+import { BRAND } from "../lib/site";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +81,49 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: `${BRAND.name} — Nepal Tour Packages from ${BRAND.city}` },
+      { name: "description", content: `Book trusted Nepal tour packages from ${BRAND.city} and across India with ${BRAND.name}. Kathmandu, Pokhara, Muktinath, Lumbini, Janakpur & Chitwan tours since ${BRAND.established}.` },
+      { name: "author", content: BRAND.name },
+      { name: "theme-color", content: "#1e4ea8" },
+      { property: "og:site_name", content: BRAND.name },
+      { property: "og:title", content: `${BRAND.name} — Nepal Tour Packages from ${BRAND.city}` },
+      { property: "og:description", content: `Trusted Nepal tour operator from ${BRAND.city}. Curated packages to Kathmandu, Pokhara, Muktinath, Lumbini, Janakpur and Chitwan.` },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          name: BRAND.name,
+          url: "/",
+          telephone: BRAND.phone,
+          email: BRAND.email,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Golghar",
+            addressLocality: BRAND.city,
+            addressRegion: "Uttar Pradesh",
+            postalCode: "273001",
+            addressCountry: "IN",
+          },
+          areaServed: "India",
+          foundingDate: String(BRAND.established),
+        }),
       },
     ],
   }),
@@ -118,8 +152,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <Footer />
+        <StickyCTAs />
+      </div>
     </QueryClientProvider>
   );
 }
