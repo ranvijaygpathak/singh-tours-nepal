@@ -1,5 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { Clock, Mountain, CalendarDays, MapPin, Check } from "lucide-react";
+import { Clock, Mountain, CalendarDays, Check } from "lucide-react";
 import { BRAND, PACKAGES, destinationFromSlug, type DestinationDetail } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
@@ -146,7 +146,6 @@ function Stat({ icon: Icon, title, children }: { icon: React.ComponentType<{ cla
       <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-soft text-primary"><Icon className="h-4 w-4" /></span>
       <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">{title}</p>
       <p className="mt-1 font-semibold text-foreground">{children}</p>
-      <span className="sr-only"><MapPin /></span>
     </div>
   );
 }
