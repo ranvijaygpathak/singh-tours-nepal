@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Star, Phone, ShieldCheck, BadgeCheck, Headphones, MapPin, Sparkles } from "lucide-react";
-import { BRAND, IMAGES, PACKAGES, DESTINATIONS, TESTIMONIALS, FAQS, CITIES, whatsappLink, formatINR } from "@/lib/site";
+import { BRAND, IMAGES, PACKAGES, DESTINATIONS, TESTIMONIALS, FAQS, CITIES, TOUR_TYPES, whatsappLink, formatINR } from "@/lib/site";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PackageCard } from "@/components/site/PackageCard";
 
@@ -47,6 +47,7 @@ function HomePage() {
       <TrustBar />
       <Featured packages={featured} />
       <Destinations />
+      <TourTypes />
       <WhyChoose />
       <Testimonials />
       <CityLinks />
@@ -165,16 +166,21 @@ function Destinations() {
         <h2 className="mt-2 font-display text-3xl font-semibold md:text-4xl">Where will Nepal take you?</h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {DESTINATIONS.map((d) => (
-            <div key={d.slug} className="group overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-soft)] transition hover:shadow-[var(--shadow-elegant)]">
+            <Link
+              key={d.slug}
+              to="/destinations/$slug"
+              params={{ slug: d.slug }}
+              className="group overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-soft)] transition hover:shadow-[var(--shadow-elegant)]"
+            >
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={d.image} alt={d.name} loading="lazy" width={1280} height={896} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
               </div>
               <div className="p-5">
-                <h3 className="font-display text-xl font-semibold">{d.name}</h3>
+                <h3 className="font-display text-xl font-semibold group-hover:text-primary">{d.name}</h3>
                 <p className="text-sm text-muted-foreground">{d.tagline}</p>
                 <p className="mt-2 text-sm text-foreground/75">{d.description}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -183,6 +189,9 @@ function Destinations() {
 }
 
 function WhyChoose() {
+  return _WhyChoose();
+}
+function _WhyChoose() {
   const items = [
     { title: "Local Gorakhpur team", desc: "Founded and run from Gorakhpur — we know the Sunauli border and Nepal routes inside-out." },
     { title: "Hand-picked hotels", desc: "We personally inspect every hotel. No surprises on arrival." },
