@@ -191,6 +191,29 @@ function Destinations() {
 function WhyChoose() {
   return _WhyChoose();
 }
+function TourTypes() {
+  return (
+    <section className="container-page py-16 md:py-24">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Tour styles</p>
+      <h2 className="mt-2 max-w-2xl font-display text-3xl font-semibold md:text-4xl">A Nepal trip for every kind of traveller.</h2>
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {TOUR_TYPES.map((t) => (
+          <Link
+            key={t.slug}
+            to="/tours/$type"
+            params={{ type: t.slug }}
+            className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
+          >
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">{t.category}</p>
+            <h3 className="mt-2 font-display text-xl font-semibold group-hover:text-primary">{t.name}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{t.tagline}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">Explore <ArrowRight className="h-4 w-4" /></span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
 function _WhyChoose() {
   const items = [
     { title: "Local Gorakhpur team", desc: "Founded and run from Gorakhpur — we know the Sunauli border and Nepal routes inside-out." },
