@@ -16,6 +16,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToursTypeRouteImport } from './routes/tours.$type'
 import { Route as PackagesSlugRouteImport } from './routes/packages.$slug'
 import { Route as NepalTourPackageFromCityRouteImport } from './routes/nepal-tour-package-from.$city'
 import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
@@ -55,6 +56,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToursTypeRoute = ToursTypeRouteImport.update({
+  id: '/tours/$type',
+  path: '/tours/$type',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PackagesSlugRoute = PackagesSlugRouteImport.update({
   id: '/packages/$slug',
   path: '/packages/$slug',
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
+  '/tours/$type': typeof ToursTypeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
+  '/tours/$type': typeof ToursTypeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
+  '/tours/$type': typeof ToursTypeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
+    | '/tours/$type'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
+    | '/tours/$type'
   id:
     | '__root__'
     | '/'
@@ -146,6 +157,7 @@ export interface FileRouteTypes {
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
+    | '/tours/$type'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -159,6 +171,7 @@ export interface RootRouteChildren {
   DestinationsSlugRoute: typeof DestinationsSlugRoute
   NepalTourPackageFromCityRoute: typeof NepalTourPackageFromCityRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
+  ToursTypeRoute: typeof ToursTypeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tours/$type': {
+      id: '/tours/$type'
+      path: '/tours/$type'
+      fullPath: '/tours/$type'
+      preLoaderRoute: typeof ToursTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/packages/$slug': {
       id: '/packages/$slug'
       path: '/packages/$slug'
@@ -247,6 +267,7 @@ const rootRouteChildren: RootRouteChildren = {
   DestinationsSlugRoute: DestinationsSlugRoute,
   NepalTourPackageFromCityRoute: NepalTourPackageFromCityRoute,
   PackagesSlugRoute: PackagesSlugRoute,
+  ToursTypeRoute: ToursTypeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
