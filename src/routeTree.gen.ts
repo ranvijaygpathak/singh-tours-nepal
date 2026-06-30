@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VehicleBookingRouteImport } from './routes/vehicle-booking'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NepalTourPackagesRouteImport } from './routes/nepal-tour-packages'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -23,6 +24,11 @@ import { Route as NepalTourPackageFromCityRouteImport } from './routes/nepal-tou
 import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const VehicleBookingRoute = VehicleBookingRouteImport.update({
+  id: '/vehicle-booking',
+  path: '/vehicle-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vehicle-booking': typeof VehicleBookingRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vehicle-booking': typeof VehicleBookingRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/vehicle-booking': typeof VehicleBookingRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/vehicle-booking'
     | '/blog/$slug'
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/vehicle-booking'
     | '/blog/$slug'
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/vehicle-booking'
     | '/blog/$slug'
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   NepalTourPackagesRoute: typeof NepalTourPackagesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VehicleBookingRoute: typeof VehicleBookingRoute
   BlogSlugRoute: typeof BlogSlugRoute
   DestinationsSlugRoute: typeof DestinationsSlugRoute
   NepalTourPackageFromCityRoute: typeof NepalTourPackageFromCityRoute
@@ -202,6 +215,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vehicle-booking': {
+      id: '/vehicle-booking'
+      path: '/vehicle-booking'
+      fullPath: '/vehicle-booking'
+      preLoaderRoute: typeof VehicleBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -304,6 +324,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   NepalTourPackagesRoute: NepalTourPackagesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VehicleBookingRoute: VehicleBookingRoute,
   BlogSlugRoute: BlogSlugRoute,
   DestinationsSlugRoute: DestinationsSlugRoute,
   NepalTourPackageFromCityRoute: NepalTourPackageFromCityRoute,
