@@ -418,3 +418,255 @@ export function formatINR(n: number): string {
 export function whatsappLink(message: string): string {
   return `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(message)}`;
 }
+
+// ---------- Destination details (standalone destination pages) ----------
+export interface DestinationDetail extends Destination {
+  bestTime: string;
+  duration: string;
+  altitude?: string;
+  attractions: { name: string; about: string }[];
+  howToReach: string;
+  tips: string[];
+  faqs: { q: string; a: string }[];
+}
+
+export const DESTINATION_DETAILS: Record<string, DestinationDetail> = {
+  kathmandu: {
+    ...DESTINATIONS[0],
+    bestTime: "October to April",
+    duration: "2–3 days recommended",
+    altitude: "1,400 m",
+    attractions: [
+      { name: "Pashupatinath Temple", about: "Sacred Shiva temple on the Bagmati — witness the evening aarti." },
+      { name: "Boudhanath Stupa", about: "Giant Buddhist stupa surrounded by monasteries — perfect for kora walk." },
+      { name: "Swayambhunath", about: "Hilltop 'Monkey Temple' with sweeping Kathmandu Valley views." },
+      { name: "Kathmandu Durbar Square", about: "UNESCO World Heritage royal palace complex and Kumari Ghar." },
+    ],
+    howToReach: "From Gorakhpur it is a comfortable 7–8 hour drive via the Sunauli border. We also coordinate flights from Indian metros to Kathmandu (TIA airport).",
+    tips: ["Carry Aadhaar/Voter ID for the border", "INR is widely accepted up to ₹100 notes", "Modest dress at temples"],
+    faqs: [
+      { q: "How many days are enough for Kathmandu?", a: "2 full days cover all major temples and Durbar Square. Add a day for Nagarkot or Bhaktapur." },
+      { q: "Is Kathmandu safe for families?", a: "Yes, the city is welcoming and very family-friendly. Our drivers and guides accompany you throughout." },
+    ],
+  },
+  pokhara: {
+    ...DESTINATIONS[1],
+    bestTime: "September to May",
+    duration: "2–3 days recommended",
+    altitude: "820 m",
+    attractions: [
+      { name: "Sarangkot Sunrise", about: "Watch the Annapurna range light up in golden hues at dawn." },
+      { name: "Phewa Lake & Tal Barahi", about: "Boating to the island temple in the middle of Phewa Lake." },
+      { name: "Davis Falls & Gupteshwor Cave", about: "Mysterious waterfall and the underground Shiva cave opposite." },
+      { name: "World Peace Pagoda", about: "White stupa across the lake with panoramic city + mountain views." },
+    ],
+    howToReach: "From Kathmandu it is a 200 km / 6-hour scenic drive on the Prithvi Highway. Domestic flights also available.",
+    tips: ["Stay near Lakeside (Baidam) for nightlife", "Sunrise at Sarangkot requires a 4:30 AM start", "Pack a light jacket — mornings can be chilly"],
+    faqs: [
+      { q: "Can elderly travellers enjoy Pokhara?", a: "Yes — most sights are accessible by car. Sarangkot vehicle drop is near the viewpoint." },
+    ],
+  },
+  muktinath: {
+    ...DESTINATIONS[2],
+    bestTime: "March–June, September–November",
+    duration: "2 days from Pokhara",
+    altitude: "3,710 m",
+    attractions: [
+      { name: "Muktinath Temple", about: "One of 108 Divya Desams sacred to Vishnu — Mukti Kshetra." },
+      { name: "108 Mukti Dharas", about: "Holy bath under 108 stone water spouts — said to grant moksha." },
+      { name: "Jwala Mai Temple", about: "Eternal flame burning naturally from a rock crevice." },
+      { name: "Kagbeni Village", about: "Ancient Mustang trading post en route to Upper Mustang." },
+    ],
+    howToReach: "Fly Pokhara → Jomsom (20 min) and take a shared jeep to Muktinath (3 hours). Road journey is also possible.",
+    tips: ["Acclimatise slowly — altitude is 3,710 m", "Carry warm woollens year-round", "Consult a doctor if you have BP/heart conditions"],
+    faqs: [
+      { q: "Is Muktinath suitable for senior citizens?", a: "Yes, with normal fitness. We arrange jeep till the temple base and ponies for the final climb." },
+    ],
+  },
+  lumbini: {
+    ...DESTINATIONS[3],
+    bestTime: "October to March",
+    duration: "1–2 days",
+    altitude: "150 m",
+    attractions: [
+      { name: "Maya Devi Temple", about: "Exact birthplace of Lord Buddha marked by the Marker Stone." },
+      { name: "Ashoka Pillar", about: "Emperor Ashoka's pillar inscribed in 249 BCE confirming the birthplace." },
+      { name: "World Peace Pagoda", about: "Serene white stupa among the Lumbini gardens." },
+      { name: "International Monasteries", about: "Monastery zone featuring Japan, China, Thailand, Sri Lanka & more." },
+    ],
+    howToReach: "Just 3 hours by road from Gorakhpur via Sunauli. Closest airport is Bhairahawa (Gautam Buddha International).",
+    tips: ["Mornings are coolest for monastery walks", "E-rickshaws available within the gardens", "Photography limited inside Maya Devi sanctum"],
+    faqs: [
+      { q: "Can Lumbini be done as a day trip from Gorakhpur?", a: "Yes — early start at 6 AM, full day at Lumbini and back by night is comfortable." },
+    ],
+  },
+  janakpur: {
+    ...DESTINATIONS[4],
+    bestTime: "October to March",
+    duration: "1–2 days",
+    altitude: "78 m",
+    attractions: [
+      { name: "Janaki Mandir", about: "Stunning marble temple dedicated to Mata Sita — built in 1910." },
+      { name: "Ram Mandir", about: "Oldest temple in Janakpur — Pagoda-style architecture." },
+      { name: "Vivah Mandap", about: "The sacred spot where Ram-Sita married." },
+      { name: "Dhanusha Dham", about: "Where pieces of Shiva Dhanush are believed to have fallen." },
+    ],
+    howToReach: "Approx 4–5 hours by road from Gorakhpur via Bhitthamore/Jaynagar border. Direct trains also run from Jaynagar.",
+    tips: ["Vivah Panchami (Nov–Dec) is the grandest festival", "Modest dress required inside temples"],
+    faqs: [
+      { q: "Best festival to visit Janakpur?", a: "Vivah Panchami when the divine wedding of Ram-Sita is celebrated." },
+    ],
+  },
+  chitwan: {
+    ...DESTINATIONS[5],
+    bestTime: "October to March",
+    duration: "2–3 days",
+    altitude: "150 m",
+    attractions: [
+      { name: "Chitwan National Park Jeep Safari", about: "Spot one-horned rhinos, deer, crocodiles and occasional tigers." },
+      { name: "Rapti River Canoe Ride", about: "Glide past gharial crocodiles in a traditional dugout canoe." },
+      { name: "Tharu Cultural Programme", about: "Stick dance and traditional Tharu hospitality." },
+      { name: "Elephant Breeding Centre", about: "Conservation centre for Asian elephants near Sauraha." },
+    ],
+    howToReach: "From Gorakhpur it is a 6–7 hour drive via Sunauli. From Kathmandu/Pokhara it is 5–6 hours.",
+    tips: ["Carry mosquito repellent", "Earth-tone clothing for safari", "Book safari permits in advance during peak season"],
+    faqs: [
+      { q: "What is the chance of seeing a rhino?", a: "Very high — Chitwan has one of the world's densest populations of one-horned rhinos." },
+    ],
+  },
+};
+
+export function destinationFromSlug(slug: string): DestinationDetail | undefined {
+  return DESTINATION_DETAILS[slug.toLowerCase()];
+}
+
+// ---------- Tour types (category landing pages) ----------
+export interface TourTypeInfo {
+  slug: string;
+  name: string;
+  category: TourPackage["category"];
+  tagline: string;
+  intro: string;
+  bullets: string[];
+}
+
+export const TOUR_TYPES: TourTypeInfo[] = [
+  { slug: "family-tours", name: "Family Tours", category: "Family", tagline: "Comfortable Nepal tours for the whole family",
+    intro: "Multi-generational Nepal trips with gentle pacing, family-friendly hotels and kid-safe activities.",
+    bullets: ["Spacious AC vehicles", "Family rooms & connecting suites", "Pure veg / Jain meals on request", "Senior-citizen friendly itineraries"] },
+  { slug: "honeymoon-tours", name: "Honeymoon Tours", category: "Honeymoon", tagline: "Romantic Himalayan escapes for newlyweds",
+    intro: "Curated couple experiences — lakeside dinners, Himalayan sunrises, spa stays and private transfers.",
+    bullets: ["4★ romantic stays in Pokhara & Nagarkot", "Candle-light dinner by Phewa Lake", "Couple spa & welcome flowers", "Private chauffeur sedan"] },
+  { slug: "religious-tours", name: "Religious Tours", category: "Religious", tagline: "Muktinath, Pashupatinath, Lumbini & Janakpur yatras",
+    intro: "Pilgrimage circuits covering the most sacred Hindu and Buddhist sites of Nepal with experienced escorts.",
+    bullets: ["Muktinath darshan & 108 dhara snan", "Pashupatinath morning aarti", "Lumbini, Janakpur, Manakamana", "Pooja samagri assistance"] },
+  { slug: "adventure-tours", name: "Adventure Tours", category: "Adventure", tagline: "Treks, safaris, paragliding and white-water rafting",
+    intro: "Adrenaline-rich Nepal experiences for thrill-seekers — Chitwan safaris, Pokhara paragliding and Annapurna foothill treks.",
+    bullets: ["Chitwan jungle safari", "Pokhara paragliding & zip-flyer", "Trishuli river rafting", "Short Himalayan treks"] },
+  { slug: "luxury-tours", name: "Luxury Tours", category: "Luxury", tagline: "5★ stays, private jets and gourmet dining",
+    intro: "Premium Nepal journeys with handpicked 5★ properties, private mountain flights and personal butler service.",
+    bullets: ["Hyatt, Marriott, Dwarika's stays", "Private Everest mountain flight", "Helicopter to Muktinath", "Gourmet Newari & continental dining"] },
+  { slug: "corporate-tours", name: "Corporate Tours", category: "Corporate", tagline: "Offsites, MICE and group incentives to Nepal",
+    intro: "Hassle-free corporate offsites — group bookings of 25–500 pax with team-building, conferences and cultural evenings.",
+    bullets: ["Conference halls in Kathmandu & Pokhara", "Group air & ground transport", "Team-building activities", "GST invoicing & MICE support"] },
+];
+
+export function tourTypeFromSlug(slug: string): TourTypeInfo | undefined {
+  return TOUR_TYPES.find((t) => t.slug === slug.toLowerCase());
+}
+
+// ---------- Vehicles (taxi / vehicle booking) ----------
+export interface Vehicle {
+  slug: string;
+  name: string;
+  capacity: string;
+  bestFor: string;
+  pricePerKm: number;
+  pricePerDay: number;
+  features: string[];
+}
+
+export const VEHICLES: Vehicle[] = [
+  { slug: "swift-dzire", name: "Swift Dzire", capacity: "4 + 1 passengers", bestFor: "Couples & small families",
+    pricePerKm: 12, pricePerDay: 2500, features: ["AC", "Music system", "Experienced driver", "Boot space for 2 bags"] },
+  { slug: "ertiga", name: "Maruti Ertiga", capacity: "6 + 1 passengers", bestFor: "Small families & friends",
+    pricePerKm: 15, pricePerDay: 3200, features: ["AC", "Spacious 3 rows", "Music system", "Boot space for 3 bags"] },
+  { slug: "innova-crysta", name: "Toyota Innova Crysta", capacity: "6 + 1 passengers", bestFor: "Family Nepal tours & long hauls",
+    pricePerKm: 18, pricePerDay: 4000, features: ["AC", "Plush seating", "Large boot", "Most popular for Nepal trips"] },
+  { slug: "tempo-traveller-12", name: "Tempo Traveller (12-seater)", capacity: "12 + 1 passengers", bestFor: "Group & family tours",
+    pricePerKm: 28, pricePerDay: 6500, features: ["AC", "Push-back seats", "Roof carrier", "Ideal for Nepal yatra groups"] },
+  { slug: "tempo-traveller-17", name: "Tempo Traveller (17-seater)", capacity: "17 + 1 passengers", bestFor: "Large groups & pilgrim parties",
+    pricePerKm: 32, pricePerDay: 7500, features: ["AC", "Push-back seats", "Roof carrier", "Pilgrim group favourite"] },
+  { slug: "mini-bus-26", name: "Mini Bus (26-seater)", capacity: "26 + 1 passengers", bestFor: "Corporate & wedding groups",
+    pricePerKm: 42, pricePerDay: 11000, features: ["AC", "Push-back seats", "PA system", "Luggage hold"] },
+];
+
+export function vehicleFromSlug(slug: string): Vehicle | undefined {
+  return VEHICLES.find((v) => v.slug === slug.toLowerCase());
+}
+
+// ---------- Blog posts ----------
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readMins: number;
+  cover: string;
+  category: string;
+  content: { heading: string; body: string }[];
+}
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "nepal-tour-from-gorakhpur-complete-guide",
+    title: "Nepal Tour from Gorakhpur — The Complete 2026 Guide",
+    excerpt: "Everything you need to know about planning a Nepal trip from Gorakhpur — border, costs, best time, itineraries and more.",
+    date: "2026-05-12", readMins: 9, cover: heroNepal, category: "Travel Guide",
+    content: [
+      { heading: "Why Gorakhpur is the best gateway to Nepal", body: "Gorakhpur sits just 100 km from the Sunauli border, making it the most convenient launch-pad for Nepal trips from India. Most of our travellers fly or train into Gorakhpur and start the Nepal journey within the same day." },
+      { heading: "Border formalities for Indian citizens", body: "No visa is required. A valid Aadhaar card, Voter ID or Passport (any one) is enough. Our team handles the immigration counter and currency exchange." },
+      { heading: "Best time to visit Nepal from Gorakhpur", body: "October to April offers clear Himalayan views and the most pleasant weather. March–May is ideal for sightseeing, while September–November is the festival season." },
+      { heading: "Suggested itineraries", body: "6 days for Kathmandu-Pokhara, 8 days for Muktinath, 5 days for Lumbini-Janakpur and 4 days for a Chitwan safari escape." },
+      { heading: "Cost estimate", body: "Most Nepal packages from Gorakhpur start at ₹8,999 per person on twin-sharing basis, all inclusive of transport, hotels and breakfast/dinner." },
+    ],
+  },
+  {
+    slug: "muktinath-yatra-from-india",
+    title: "Muktinath Yatra from India — Route, Cost & Best Time",
+    excerpt: "A definitive Muktinath Dham guide for Indian pilgrims — Jomsom flight, road route, what to pack and how much it costs.",
+    date: "2026-04-22", readMins: 7, cover: destMuktinath, category: "Pilgrimage",
+    content: [
+      { heading: "Why Muktinath?", body: "Muktinath is one of the 108 Divya Desams sacred to Vishnu and a Mukti Kshetra — said to free the soul from rebirth." },
+      { heading: "Two routes to reach Muktinath", body: "(1) Pokhara → Jomsom by flight (20 minutes) → jeep to Muktinath (3 hours). (2) All road via Beni-Tatopani-Jomsom (long but scenic)." },
+      { heading: "What to pack", body: "Warm woollens, gloves, sunglasses, sunscreen, basic medicines including Diamox if prone to AMS. Comfortable trek shoes for the temple climb." },
+      { heading: "Cost from Gorakhpur", body: "An 8-day Muktinath yatra from Gorakhpur typically costs ₹24,999 per person on twin sharing including flights." },
+    ],
+  },
+  {
+    slug: "kathmandu-vs-pokhara",
+    title: "Kathmandu vs Pokhara — Which Should You Choose First?",
+    excerpt: "Heritage temples or lakeside calm? Here is how to decide between Kathmandu and Pokhara for your first Nepal trip.",
+    date: "2026-03-08", readMins: 5, cover: destPokhara, category: "Destinations",
+    content: [
+      { heading: "Choose Kathmandu if…", body: "You love history, temples, street food and bustling bazaars. Pashupatinath aarti and Thamel nightlife are unmissable." },
+      { heading: "Choose Pokhara if…", body: "You want lakes, mountains, paragliding and a slower pace. Sarangkot sunrise is one of the world's most beautiful." },
+      { heading: "Best of both worlds", body: "Our 5N/6D Kathmandu-Pokhara package covers both cities at a relaxed pace and is our bestseller for first-timers." },
+    ],
+  },
+  {
+    slug: "lumbini-buddhist-circuit",
+    title: "Lumbini Buddhist Circuit — A Day-by-Day Guide",
+    excerpt: "The complete guide to exploring Lumbini's monastic zone, Maya Devi Temple and Ashoka Pillar in two unhurried days.",
+    date: "2026-02-14", readMins: 6, cover: destLumbini, category: "Pilgrimage",
+    content: [
+      { heading: "The sacred garden", body: "Maya Devi Temple marks the exact spot where Buddha was born in 623 BCE. The Marker Stone, Ashoka Pillar and sacred pond are within a few minutes' walk." },
+      { heading: "International monastic zone", body: "Walk or e-rickshaw through Japan, China, Thailand, Sri Lanka, Vietnam, Korea and Myanmar monasteries — each in its native architectural style." },
+      { heading: "Where to stay", body: "Comfortable 3★ hotels are clustered just outside the gardens. We recommend Hotel Tilaurakot or Lumbini Garden New Crystal." },
+    ],
+  },
+];
+
+export function blogPostFromSlug(slug: string): BlogPost | undefined {
+  return BLOG_POSTS.find((p) => p.slug === slug.toLowerCase());
+}

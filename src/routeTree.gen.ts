@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VehicleBookingRouteImport } from './routes/vehicle-booking'
+import { Route as TaxiBookingRouteImport } from './routes/taxi-booking'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as NepalTourPackagesRouteImport } from './routes/nepal-tour-packages'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -16,9 +18,23 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as ToursTypeRouteImport } from './routes/tours.$type'
 import { Route as PackagesSlugRouteImport } from './routes/packages.$slug'
 import { Route as NepalTourPackageFromCityRouteImport } from './routes/nepal-tour-package-from.$city'
+import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const VehicleBookingRoute = VehicleBookingRouteImport.update({
+  id: '/vehicle-booking',
+  path: '/vehicle-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TaxiBookingRoute = TaxiBookingRouteImport.update({
+  id: '/taxi-booking',
+  path: '/taxi-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -54,6 +70,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToursTypeRoute = ToursTypeRouteImport.update({
+  id: '/tours/$type',
+  path: '/tours/$type',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PackagesSlugRoute = PackagesSlugRouteImport.update({
   id: '/packages/$slug',
   path: '/packages/$slug',
@@ -65,6 +91,16 @@ const NepalTourPackageFromCityRoute =
     path: '/nepal-tour-package-from/$city',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
+  id: '/destinations/$slug',
+  path: '/destinations/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -74,8 +110,14 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/taxi-booking': typeof TaxiBookingRoute
+  '/vehicle-booking': typeof VehicleBookingRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
+  '/tours/$type': typeof ToursTypeRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -85,8 +127,14 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/taxi-booking': typeof TaxiBookingRoute
+  '/vehicle-booking': typeof VehicleBookingRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
+  '/tours/$type': typeof ToursTypeRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -97,8 +145,14 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/taxi-booking': typeof TaxiBookingRoute
+  '/vehicle-booking': typeof VehicleBookingRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
+  '/tours/$type': typeof ToursTypeRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,8 +164,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/taxi-booking'
+    | '/vehicle-booking'
+    | '/blog/$slug'
+    | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
+    | '/tours/$type'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -121,8 +181,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/taxi-booking'
+    | '/vehicle-booking'
+    | '/blog/$slug'
+    | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
+    | '/tours/$type'
+    | '/blog'
   id:
     | '__root__'
     | '/'
@@ -132,8 +198,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/taxi-booking'
+    | '/vehicle-booking'
+    | '/blog/$slug'
+    | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
+    | '/tours/$type'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,12 +216,32 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   NepalTourPackagesRoute: typeof NepalTourPackagesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TaxiBookingRoute: typeof TaxiBookingRoute
+  VehicleBookingRoute: typeof VehicleBookingRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  DestinationsSlugRoute: typeof DestinationsSlugRoute
   NepalTourPackageFromCityRoute: typeof NepalTourPackageFromCityRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
+  ToursTypeRoute: typeof ToursTypeRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vehicle-booking': {
+      id: '/vehicle-booking'
+      path: '/vehicle-booking'
+      fullPath: '/vehicle-booking'
+      preLoaderRoute: typeof VehicleBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/taxi-booking': {
+      id: '/taxi-booking'
+      path: '/taxi-booking'
+      fullPath: '/taxi-booking'
+      preLoaderRoute: typeof TaxiBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -199,6 +291,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/$type': {
+      id: '/tours/$type'
+      path: '/tours/$type'
+      fullPath: '/tours/$type'
+      preLoaderRoute: typeof ToursTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/packages/$slug': {
       id: '/packages/$slug'
       path: '/packages/$slug'
@@ -213,6 +319,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NepalTourPackageFromCityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/destinations/$slug': {
+      id: '/destinations/$slug'
+      path: '/destinations/$slug'
+      fullPath: '/destinations/$slug'
+      preLoaderRoute: typeof DestinationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -224,8 +344,14 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   NepalTourPackagesRoute: NepalTourPackagesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TaxiBookingRoute: TaxiBookingRoute,
+  VehicleBookingRoute: VehicleBookingRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  DestinationsSlugRoute: DestinationsSlugRoute,
   NepalTourPackageFromCityRoute: NepalTourPackageFromCityRoute,
   PackagesSlugRoute: PackagesSlugRoute,
+  ToursTypeRoute: ToursTypeRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

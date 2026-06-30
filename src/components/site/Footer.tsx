@@ -26,7 +26,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-white/75">
             {DESTINATIONS.map((d) => (
               <li key={d.slug}>
-                <Link to="/nepal-tour-packages" hash={d.slug} className="hover:text-white">{d.name}</Link>
+                <Link to="/destinations/$slug" params={{ slug: d.slug }} className="hover:text-white">{d.name}</Link>
               </li>
             ))}
           </ul>
@@ -36,6 +36,9 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-white/75">
             <li><Link to="/about" className="hover:text-white">About Us</Link></li>
             <li><Link to="/nepal-tour-packages" className="hover:text-white">Tour Packages</Link></li>
+            <li><Link to="/taxi-booking" className="hover:text-white">Taxi Booking</Link></li>
+            <li><Link to="/vehicle-booking" className="hover:text-white">Vehicle Booking</Link></li>
+            <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
             <li><Link to="/gallery" className="hover:text-white">Gallery</Link></li>
             <li><Link to="/faq" className="hover:text-white">FAQ</Link></li>
             <li><Link to="/contact" className="hover:text-white">Contact</Link></li>

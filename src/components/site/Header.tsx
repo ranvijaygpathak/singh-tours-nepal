@@ -6,9 +6,12 @@ import { BRAND } from "@/lib/site";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/nepal-tour-packages", label: "Tour Packages" },
+  { to: "/destinations/kathmandu", label: "Destinations" },
+  { to: "/taxi-booking", label: "Taxi" },
+  { to: "/vehicle-booking", label: "Vehicles" },
+  { to: "/blog", label: "Blog" },
   { to: "/gallery", label: "Gallery" },
   { to: "/about", label: "About" },
-  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
