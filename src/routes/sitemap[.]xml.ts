@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { PACKAGES, CITIES } from "@/lib/site";
+import { PACKAGES, CITIES, DESTINATION_DETAILS, TOUR_TYPES, BLOG_POSTS } from "@/lib/site";
 
 // TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://singh-tours-nepal.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -18,6 +18,9 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/nepal-tour-packages", changefreq: "weekly", priority: "0.9" },
+          { path: "/taxi-booking", changefreq: "monthly", priority: "0.7" },
+          { path: "/vehicle-booking", changefreq: "monthly", priority: "0.7" },
+          { path: "/blog", changefreq: "weekly", priority: "0.7" },
           { path: "/about", changefreq: "monthly", priority: "0.6" },
           { path: "/contact", changefreq: "monthly", priority: "0.6" },
           { path: "/gallery", changefreq: "monthly", priority: "0.5" },
@@ -26,6 +29,21 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/packages/${p.slug}`,
             changefreq: "monthly" as const,
             priority: "0.8",
+          })),
+          ...Object.keys(DESTINATION_DETAILS).map((slug) => ({
+            path: `/destinations/${slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.8",
+          })),
+          ...TOUR_TYPES.map((t) => ({
+            path: `/tours/${t.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.7",
+          })),
+          ...BLOG_POSTS.map((b) => ({
+            path: `/blog/${b.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.6",
           })),
           ...CITIES.map((c) => ({
             path: `/nepal-tour-package-from/${c.slug}`,
