@@ -21,6 +21,7 @@ import { Route as ToursTypeRouteImport } from './routes/tours.$type'
 import { Route as PackagesSlugRouteImport } from './routes/packages.$slug'
 import { Route as NepalTourPackageFromCityRouteImport } from './routes/nepal-tour-package-from.$city'
 import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -83,6 +84,11 @@ const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
   path: '/destinations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/nepal-tour-packages': typeof NepalTourPackagesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/nepal-tour-package-from/$city': typeof NepalTourPackageFromCityRoute
   '/packages/$slug': typeof PackagesSlugRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/nepal-tour-packages'
     | '/sitemap.xml'
+    | '/blog/$slug'
     | '/destinations/$slug'
     | '/nepal-tour-package-from/$city'
     | '/packages/$slug'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   NepalTourPackagesRoute: typeof NepalTourPackagesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   DestinationsSlugRoute: typeof DestinationsSlugRoute
   NepalTourPackageFromCityRoute: typeof NepalTourPackageFromCityRoute
   PackagesSlugRoute: typeof PackagesSlugRoute
@@ -273,6 +286,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DestinationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   NepalTourPackagesRoute: NepalTourPackagesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BlogSlugRoute: BlogSlugRoute,
   DestinationsSlugRoute: DestinationsSlugRoute,
   NepalTourPackageFromCityRoute: NepalTourPackageFromCityRoute,
   PackagesSlugRoute: PackagesSlugRoute,
