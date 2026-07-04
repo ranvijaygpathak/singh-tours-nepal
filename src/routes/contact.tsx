@@ -42,7 +42,9 @@ function ContactPage() {
             <a href={`mailto:${BRAND.email}`} className="font-semibold text-primary">{BRAND.email}</a>
           </Item>
           <Item icon={MapPin} title="Office">
-            {BRAND.address}
+            <a href={BRAND.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+              {BRAND.address}
+            </a>
           </Item>
           <Item icon={Clock} title="Hours">
             {BRAND.hours}
@@ -50,7 +52,7 @@ function ContactPage() {
           <div className="overflow-hidden rounded-2xl border border-border">
             <iframe
               title="Office location map"
-              src="https://www.google.com/maps?q=Golghar,Gorakhpur&output=embed"
+              src={BRAND.mapsEmbedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="h-72 w-full"
