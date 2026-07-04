@@ -16,7 +16,10 @@ export const BRAND = {
   whatsapp: "919415850932",
   whatsappHref: "https://wa.me/919415850932",
   email: "singhtravelgkp@gmail.com",
-  address: "Golghar, Gorakhpur, Uttar Pradesh 273001, India",
+  address: "Shop No 26/27, GDA Building, Railway Station Road, in-front of Gate No 1, Gorakhpur, Uttar Pradesh 273001, India",
+  mapsUrl: "https://maps.app.goo.gl/S7GQ5BjtsaQzHv8Q8",
+  mapsEmbedUrl: "https://www.google.com/maps?q=Singh+Tour+and+Travels,+GDA+Building,+Railway+Station+Road,+Gorakhpur&ll=26.7579546,83.3839899&z=17&output=embed",
+  geo: { lat: 26.7579546, lng: 83.3839899 },
   hours: "Open daily, 8:00 AM – 9:00 PM",
   established: 2008,
   social: {
