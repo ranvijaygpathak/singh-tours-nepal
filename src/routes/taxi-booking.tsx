@@ -4,8 +4,8 @@ import { BRAND, whatsappLink } from "@/lib/site";
 import { PageHero } from "@/components/site/PageHero";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 
-const TITLE = `Taxi Booking in ${BRAND.city} | Gorakhpur to Nepal Taxi | ${BRAND.name}`;
-const DESC = `One-way and round-trip taxi service from ${BRAND.city} to Nepal, airport pickup and intercity cabs. 24x7 booking. Call ${BRAND.phone}.`;
+const TITLE = `Taxi Booking in ${BRAND.city} | Gorakhpur to Nepal Taxi Service | ${BRAND.name}`;
+const DESC = `Taxi booking in ${BRAND.city} — one-way and round-trip cabs from Gorakhpur to Kathmandu, Pokhara, Muktinath, Lumbini, Chitwan and Sunauli border. Airport & railway pickup, 24x7 booking. Call ${BRAND.phone}.`;
 
 const ROUTES = [
   { from: "Gorakhpur", to: "Kathmandu", price: 11000 },
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/taxi-booking")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      { name: "keywords", content: `taxi Gorakhpur to Kathmandu, Gorakhpur to Nepal taxi, Gorakhpur airport taxi, Sunauli taxi, Pokhara taxi from Gorakhpur` },
+      { name: "keywords", content: "taxi booking in Gorakhpur, Gorakhpur taxi service, taxi Gorakhpur to Kathmandu, Gorakhpur to Nepal taxi, Gorakhpur airport taxi, Sunauli taxi, Pokhara taxi from Gorakhpur, Muktinath taxi from Gorakhpur" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:url", content: "/taxi-booking" },

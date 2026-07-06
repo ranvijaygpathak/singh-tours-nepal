@@ -4,15 +4,31 @@ import { BRAND, IMAGES, PACKAGES, DESTINATIONS, TESTIMONIALS, FAQS, CITIES, TOUR
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { PackageCard } from "@/components/site/PackageCard";
 
-const TITLE = `Nepal Tour Packages from ${BRAND.city} | ${BRAND.name}`;
-const DESC = `Book affordable Nepal tour packages from ${BRAND.city} & across India — Kathmandu, Pokhara, Muktinath, Lumbini & Chitwan. Trusted since ${BRAND.established}. Call ${BRAND.phone}.`;
+const TITLE = `Best Travel Agent & Nepal Tour Operator in ${BRAND.city} | ${BRAND.name}`;
+const DESC = `${BRAND.name} — best travel agent and Nepal tour operator in ${BRAND.city}. Nepal tour packages from Gorakhpur, Muktinath tour packages, Kathmandu-Pokhara-Lumbini-Chitwan trips and taxi booking in Gorakhpur. Trusted since ${BRAND.established}. Call ${BRAND.phone}.`;
+const KEYWORDS = [
+  "travel agent in Gorakhpur",
+  "best travel agent in Gorakhpur",
+  "tour operator in Gorakhpur",
+  "best tour operator in Gorakhpur",
+  "Nepal tour operator in Gorakhpur",
+  "Nepal tour package from Gorakhpur",
+  "tour and travel agent in Gorakhpur",
+  "Muktinath tour operator in Gorakhpur",
+  "Muktinath tour package from Gorakhpur",
+  "taxi booking in Gorakhpur",
+  "Singh Tour and Travels Gorakhpur",
+  "Kathmandu Pokhara package",
+  "Lumbini tour",
+  "Chitwan safari",
+].join(", ");
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      { name: "keywords", content: "Nepal tour package from Gorakhpur, Nepal tour from India, Kathmandu Pokhara package, Muktinath yatra, Lumbini tour, Chitwan safari, Singh Tour and Travels Gorakhpur" },
+      { name: "keywords", content: KEYWORDS },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
@@ -32,6 +48,40 @@ export const Route = createFileRoute("/")({
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: f.a },
           })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TravelAgency",
+          name: BRAND.name,
+          description: `Best travel agent and Nepal tour operator in ${BRAND.city}. Nepal tour packages, Muktinath yatra and taxi booking in ${BRAND.city}.`,
+          telephone: BRAND.phone,
+          email: BRAND.email,
+          url: "https://singh-tours-nepal.lovable.app/",
+          image: "https://singh-tours-nepal.lovable.app" + IMAGES.hero,
+          areaServed: [
+            { "@type": "City", name: "Gorakhpur" },
+            { "@type": "Country", name: "Nepal" },
+            { "@type": "Country", name: "India" },
+          ],
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: BRAND.address,
+            addressLocality: BRAND.city,
+            addressRegion: "Uttar Pradesh",
+            postalCode: "273001",
+            addressCountry: "IN",
+          },
+          makesOffer: [
+            "Nepal tour package from Gorakhpur",
+            "Muktinath tour package from Gorakhpur",
+            "Kathmandu Pokhara tour package",
+            "Lumbini tour package",
+            "Chitwan jungle safari",
+            "Taxi booking in Gorakhpur",
+          ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
         }),
       },
     ],
