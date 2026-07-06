@@ -633,6 +633,54 @@ export const CITIES: { slug: string; name: string; state: string }[] = [
   { slug: "silvassa", name: "Silvassa", state: "Dadra & Nagar Haveli" },
   { slug: "daman", name: "Daman", state: "Daman & Diu" },
   { slug: "kavaratti", name: "Kavaratti", state: "Lakshadweep" },
+  // Additional Uttar Pradesh
+  { slug: "maharajganj", name: "Maharajganj", state: "Uttar Pradesh" },
+  { slug: "siddharthnagar", name: "Siddharthnagar", state: "Uttar Pradesh" },
+  { slug: "sant-kabir-nagar", name: "Sant Kabir Nagar", state: "Uttar Pradesh" },
+  { slug: "ambedkar-nagar", name: "Ambedkar Nagar", state: "Uttar Pradesh" },
+  { slug: "amethi", name: "Amethi", state: "Uttar Pradesh" },
+  { slug: "barabanki", name: "Barabanki", state: "Uttar Pradesh" },
+  { slug: "balrampur", name: "Balrampur", state: "Uttar Pradesh" },
+  { slug: "sonbhadra", name: "Sonbhadra", state: "Uttar Pradesh" },
+  { slug: "chandauli", name: "Chandauli", state: "Uttar Pradesh" },
+  { slug: "bhadohi", name: "Bhadohi", state: "Uttar Pradesh" },
+  { slug: "pratapgarh-up", name: "Pratapgarh", state: "Uttar Pradesh" },
+  { slug: "kannauj", name: "Kannauj", state: "Uttar Pradesh" },
+  { slug: "auraiya", name: "Auraiya", state: "Uttar Pradesh" },
+  { slug: "kasganj", name: "Kasganj", state: "Uttar Pradesh" },
+  { slug: "hathras", name: "Hathras", state: "Uttar Pradesh" },
+  // Additional Bihar
+  { slug: "buxar", name: "Buxar", state: "Bihar" },
+  { slug: "jehanabad", name: "Jehanabad", state: "Bihar" },
+  { slug: "araria", name: "Araria", state: "Bihar" },
+  { slug: "supaul", name: "Supaul", state: "Bihar" },
+  { slug: "gopalganj", name: "Gopalganj", state: "Bihar" },
+  { slug: "vaishali", name: "Vaishali", state: "Bihar" },
+  { slug: "rohtas", name: "Rohtas", state: "Bihar" },
+  { slug: "aurangabad-bihar", name: "Aurangabad", state: "Bihar" },
+  // Additional Jharkhand
+  { slug: "chaibasa", name: "Chaibasa", state: "Jharkhand" },
+  { slug: "phusro", name: "Phusro", state: "Jharkhand" },
+  { slug: "medininagar", name: "Medininagar", state: "Jharkhand" },
+  // Additional West Bengal
+  { slug: "haldia", name: "Haldia", state: "West Bengal" },
+  { slug: "kalimpong", name: "Kalimpong", state: "West Bengal" },
+  { slug: "cooch-behar", name: "Cooch Behar", state: "West Bengal" },
+  { slug: "jalpaiguri", name: "Jalpaiguri", state: "West Bengal" },
+  // Additional Uttarakhand
+  { slug: "mussoorie", name: "Mussoorie", state: "Uttarakhand" },
+  { slug: "almora", name: "Almora", state: "Uttarakhand" },
+  { slug: "pithoragarh", name: "Pithoragarh", state: "Uttarakhand" },
+  // Additional Rajasthan
+  { slug: "bhilwara", name: "Bhilwara", state: "Rajasthan" },
+  { slug: "chittorgarh", name: "Chittorgarh", state: "Rajasthan" },
+  { slug: "sri-ganganagar", name: "Sri Ganganagar", state: "Rajasthan" },
+  { slug: "hanumangarh", name: "Hanumangarh", state: "Rajasthan" },
+  // Additional MP
+  { slug: "dewas", name: "Dewas", state: "Madhya Pradesh" },
+  { slug: "vidisha", name: "Vidisha", state: "Madhya Pradesh" },
+  { slug: "singrauli", name: "Singrauli", state: "Madhya Pradesh" },
+  { slug: "chhatarpur", name: "Chhatarpur", state: "Madhya Pradesh" },
 ];
 
 export function cityFromSlug(slug: string): { slug: string; name: string; state: string } {
