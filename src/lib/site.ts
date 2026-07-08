@@ -705,6 +705,12 @@ export const CITIES: { slug: string; name: string; state: string }[] = [
   { slug: "udupi", name: "Udupi", state: "Karnataka" },
   { slug: "kannur", name: "Kannur", state: "Kerala" },
   { slug: "kollam", name: "Kollam", state: "Kerala" },
+  { slug: "valsad", name: "Valsad", state: "Gujarat" },
+  { slug: "palanpur", name: "Palanpur", state: "Gujarat" },
+  { slug: "guna", name: "Guna", state: "Madhya Pradesh" },
+  { slug: "konark", name: "Konark", state: "Odisha" },
+  { slug: "ambikapur", name: "Ambikapur", state: "Chhattisgarh" },
+  { slug: "amaravati", name: "Amaravati", state: "Andhra Pradesh" },
 ];
 
 export function cityFromSlug(slug: string): { slug: string; name: string; state: string } {
